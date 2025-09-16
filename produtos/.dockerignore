@@ -1,0 +1,7 @@
+﻿node_modules
+npm-cache
+.npm
+.git
+Dockerfile
+README.md
+README_EXPLICACAO.md

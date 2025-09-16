@@ -1,1 +1,34 @@
-import express from 'express';\nimport cors from 'cors';\nimport Database from 'better-sqlite3';\n\nconst app = express();\napp.use(cors());\napp.use(express.json());\n\nconst db = new Database('produtos.db');\ndb.exec(CREATE TABLE IF NOT EXISTS produtos (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  nome TEXT NOT NULL,\n  descricao TEXT,\n  valor REAL NOT NULL\n););\n\napp.get('/health', (_req, res) => { res.json({ status: 'ok' }); });\n\napp.post('/produtos', (req, res) => {\n  const { nome, descricao, valor } = req.body;\n  if (!nome || valor == null) return res.status(400).json({ error: 'nome e valor são obrigatórios' });\n  const stmt = db.prepare('INSERT INTO produtos (nome, descricao, valor) VALUES (?, ?, ?)');\n  const info = stmt.run(nome, descricao ?? null, Number(valor));\n  const produto = db.prepare('SELECT * FROM produtos WHERE id = ?').get(info.lastInsertRowid);\n  res.status(201).json(produto);\n});\n\napp.get('/produtos', (_req, res) => {\n  const rows = db.prepare('SELECT * FROM produtos ORDER BY id DESC').all();\n  res.json(rows);\n});\n\nconst PORT = process.env.PORT || 5001;\napp.listen(PORT, () => console.log(produtos service listening on ));\n
+ï»¿import express from 'express';
+import cors from 'cors';
+import Database from 'better-sqlite3';
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const db = new Database('produtos.db');
+db.exec(CREATE TABLE IF NOT EXISTS produtos (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  nome TEXT NOT NULL,
+  descricao TEXT,
+  valor REAL NOT NULL
+););
+
+app.get('/health', (_req, res) => { res.json({ status: 'ok' }); });
+
+app.post('/produtos', (req, res) => {
+  const { nome, descricao, valor } = req.body;
+  if (!nome || valor == null) return res.status(400).json({ error: 'nome e valor sÃ£o obrigatÃ³rios' });
+  const stmt = db.prepare('INSERT INTO produtos (nome, descricao, valor) VALUES (?, ?, ?)');
+  const info = stmt.run(nome, descricao ?? null, Number(valor));
+  const produto = db.prepare('SELECT * FROM produtos WHERE id = ?').get(info.lastInsertRowid);
+  res.status(201).json(produto);
+});
+
+app.get('/produtos', (_req, res) => {
+  const rows = db.prepare('SELECT * FROM produtos ORDER BY id DESC').all();
+  res.json(rows);
+});
+
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => console.log(produtos service listening on ));

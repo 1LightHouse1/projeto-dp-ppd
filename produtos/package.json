@@ -1,0 +1,25 @@
+{
+    "name":  "produtos",
+    "version":  "1.0.0",
+    "main":  "index.js",
+    "scripts":  {
+                    "start":  "node src/server.js",
+                    "dev":  "nodemon src/server.js"
+                },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "description":  "",
+    "type":  "module",
+    "dependencies":  {
+                         "better-sqlite3":  "^12.2.0",
+                         "cors":  "^2.8.5",
+                         "express":  "^5.1.0",
+                         "sqlite3":  "^5.1.7"
+                     },
+    "devDependencies":  {
+                            "nodemon":  "^3.1.10"
+                        }
+}

@@ -19,8 +19,8 @@
     build: ./vendas
     container_name: vendas
     environment:
-      - CLIENTES_URL=http://clientes:5002
-      - PRODUTOS_URL=http://produtos:5001
+      - CLIENTES_URL=http://clientes:5002/clientes
+      - PRODUTOS_URL=http://produtos:5001/produtos
     ports:
       - "5003:5003"
     depends_on:

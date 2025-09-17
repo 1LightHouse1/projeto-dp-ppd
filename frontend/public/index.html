@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Controle de Vendas</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Controle de Vendas</h1>
+    <nav class="tabs">
+      <button data-tab="produtos" class="active">Produtos</button>
+      <button data-tab="clientes">Clientes</button>
+      <button data-tab="vendas">Vendas</button>
+    </nav>
+
+    <section id="produtos" class="tab active">
+      <h2>Produtos</h2>
+      <form id="form-produto">
+        <input name="nome" placeholder="Nome" required />
+        <input name="descricao" placeholder="Descrição" />
+        <input name="valor" type="number" step="0.01" placeholder="Valor" required />
+        <button type="submit">Cadastrar</button>
+      </form>
+      <ul id="lista-produtos"></ul>
+    </section>
+
+    <section id="clientes" class="tab">
+      <h2>Clientes</h2>
+      <form id="form-cliente">
+        <input name="nome" placeholder="Nome" required />
+        <input name="telefone" placeholder="Telefone" />
+        <button type="submit">Cadastrar</button>
+      </form>
+      <ul id="lista-clientes"></ul>
+    </section>
+
+    <section id="vendas" class="tab">
+      <h2>Vendas</h2>
+      <form id="form-venda">
+        <input name="cliente_id" type="number" placeholder="Cliente ID" required />
+        <input name="produto_id" type="number" placeholder="Produto ID" required />
+        <input name="quantidade" type="number" placeholder="Quantidade" required />
+        <button type="submit">Registrar Venda</button>
+      </form>
+      <ul id="lista-vendas"></ul>
+    </section>
+
+    <script src="/main.js"></script>
+  </body>
+</html>

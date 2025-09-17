@@ -5,7 +5,7 @@
     ports:
       - "5001:5001"
     volumes:
-      - shared-db:/data
+      - ./database:/data
 
   clientes:
     build: ./clientes
@@ -13,7 +13,7 @@
     ports:
       - "5002:5002"
     volumes:
-      - shared-db:/data
+      - ./database:/data
 
   vendas:
     build: ./vendas
@@ -27,7 +27,7 @@
       - produtos
       - clientes
     volumes:
-      - shared-db:/data
+      - ./database:/data
 
   frontend:
     build: ./frontend
@@ -42,5 +42,4 @@
 networks:
   default:
     name: projeto-dp-ppd-net
-volumes:
-  shared-db:
+# Banco de dados agora está no diretório local ./database

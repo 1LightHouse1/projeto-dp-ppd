@@ -33,6 +33,12 @@ docker compose logs vendas
 # Rebuild apenas um serviço
 docker compose build --no-cache frontend
 docker compose up -d frontend
+
+# Acessar banco de dados diretamente
+sqlite3 database/app.db
+
+# Backup do banco
+cp database/app.db database/app_backup.db
 ```
 
 ## 🏗️ Arquitetura do Sistema
@@ -45,8 +51,9 @@ docker compose up -d frontend
 
 ### Banco de Dados
 - **SQLite compartilhado** entre todos os serviços
-- **Volume Docker** para persistência de dados
+- **Diretório local** `./database/` para persistência
 - **Estrutura normalizada** com relacionamentos
+- **Arquivo**: `database/app.db` (visível no projeto)
 
 ## 📡 Endpoints da API
 
@@ -117,9 +124,11 @@ curl http://localhost:5003/health
 
 ## 🐳 Docker
 
-### Estrutura de Containers
+### Estrutura do Projeto
 ```
 projeto-dp-ppd/
+├── database/
+│   └── app.db         # Banco SQLite compartilhado
 ├── produtos/          # Serviço Node.js
 ├── clientes/          # Serviço Python
 ├── vendas/            # Serviço Node.js
@@ -127,9 +136,10 @@ projeto-dp-ppd/
 └── docker-compose.yml # Orquestração
 ```
 
-### Volumes
-- **shared-db**: Banco SQLite compartilhado
-- **Persistência**: Dados mantidos entre restarts
+### Persistência de Dados
+- **Diretório local**: `./database/` montado em `/data` nos containers
+- **Arquivo único**: `app.db` compartilhado entre todos os serviços
+- **Acesso direto**: Banco visível no sistema de arquivos
 
 ## 🔧 Tecnologias Utilizadas
 
@@ -181,11 +191,10 @@ docker compose logs -f
 
 # Testar conectividade
 curl http://localhost:8080
-<<<<<<< HEAD
 
-## é isso
-```
-=======
+# Verificar banco de dados
+ls -la database/
+sqlite3 database/app.db ".tables"
 ```
 
 ## 📝 Notas de Desenvolvimento
@@ -211,4 +220,3 @@ Este projeto demonstra:
 **Desenvolvido por:** [Seu Nome]  
 **Disciplina:** Programação Paralela e Distribuída (PPD)  
 **Data:** Setembro 2025
->>>>>>> e7a52f53ca23725ecf33b16663064e72c4fd4ebd

@@ -181,4 +181,6 @@ docker compose logs -f
 
 # Testar conectividade
 curl http://localhost:8080
+
+## é isso
 ```

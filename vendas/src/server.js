@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = new Database('vendas.db');
+const db = new Database('/data/app.db');
 db.exec(`CREATE TABLE IF NOT EXISTS vendas (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   cliente_id INTEGER NOT NULL,

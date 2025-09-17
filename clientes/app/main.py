@@ -4,7 +4,7 @@ import sqlite3
 
 app = FastAPI()
 
-DB_PATH = 'clientes.db'
+DB_PATH = '/data/app.db'
 
 class ClienteIn(BaseModel):
     nome: str

@@ -6,13 +6,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = new Database('produtos.db');
-db.exec(CREATE TABLE IF NOT EXISTS produtos (
+const db = new Database('/data/app.db');
+db.exec(`CREATE TABLE IF NOT EXISTS produtos (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nome TEXT NOT NULL,
   descricao TEXT,
   valor REAL NOT NULL
-););
+);`);
 
 app.get('/health', (_req, res) => { res.json({ status: 'ok' }); });
 
@@ -31,4 +31,4 @@ app.get('/produtos', (_req, res) => {
 });
 
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(produtos service listening on ));
+app.listen(PORT, () => console.log(`produtos service listening on ${PORT}`));

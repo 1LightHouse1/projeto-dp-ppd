@@ -4,12 +4,16 @@
     container_name: produtos
     ports:
       - "5001:5001"
+    volumes:
+      - shared-db:/data
 
   clientes:
     build: ./clientes
     container_name: clientes
     ports:
       - "5002:5002"
+    volumes:
+      - shared-db:/data
 
   vendas:
     build: ./vendas
@@ -22,6 +26,8 @@
     depends_on:
       - produtos
       - clientes
+    volumes:
+      - shared-db:/data
 
   frontend:
     build: ./frontend
@@ -36,3 +42,5 @@
 networks:
   default:
     name: projeto-dp-ppd-net
+volumes:
+  shared-db:

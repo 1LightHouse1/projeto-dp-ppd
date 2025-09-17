@@ -181,6 +181,34 @@ docker compose logs -f
 
 # Testar conectividade
 curl http://localhost:8080
+<<<<<<< HEAD
 
 ## é isso
 ```
+=======
+```
+
+## 📝 Notas de Desenvolvimento
+
+- **Desenvolvido em 3 dias** conforme cronograma
+- **Código limpo** com comentários explicativos
+- **Documentação completa** para apresentação
+- **Testes manuais** realizados em todos os endpoints
+- **Interface responsiva** testada em diferentes resoluções
+
+## 🎓 Apresentação Acadêmica
+
+Este projeto demonstra:
+- **Arquitetura de microserviços** na prática
+- **Conceitos de programação distribuída** aplicados
+- **Containerização** com Docker
+- **Integração** entre diferentes tecnologias
+- **UX/UI** moderna e responsiva
+- **Documentação técnica** completa
+
+---
+
+**Desenvolvido por:** [Seu Nome]  
+**Disciplina:** Programação Paralela e Distribuída (PPD)  
+**Data:** Setembro 2025
+>>>>>>> e7a52f53ca23725ecf33b16663064e72c4fd4ebd

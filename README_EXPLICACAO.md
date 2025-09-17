@@ -1,2 +1,2 @@
-# Explicação Técnica
-Arquitetura, decisões e como apresentar.
+# Explicaï¿½ï¿½o Tï¿½cnica
+Arquitetura, decisï¿½es e como apresentar.

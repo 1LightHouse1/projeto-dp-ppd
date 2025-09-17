@@ -1,0 +1,38 @@
+﻿services:
+  produtos:
+    build: ./produtos
+    container_name: produtos
+    ports:
+      - "5001:5001"
+
+  clientes:
+    build: ./clientes
+    container_name: clientes
+    ports:
+      - "5002:5002"
+
+  vendas:
+    build: ./vendas
+    container_name: vendas
+    environment:
+      - CLIENTES_URL=http://clientes:5002
+      - PRODUTOS_URL=http://produtos:5001
+    ports:
+      - "5003:5003"
+    depends_on:
+      - produtos
+      - clientes
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - produtos
+      - clientes
+      - vendas
+
+networks:
+  default:
+    name: projeto-dp-ppd-net

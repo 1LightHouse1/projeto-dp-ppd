@@ -214,9 +214,3 @@ Este projeto demonstra:
 - **Integração** entre diferentes tecnologias
 - **UX/UI** moderna e responsiva
 - **Documentação técnica** completa
-
----
-
-**Desenvolvido por:** [Seu Nome]  
-**Disciplina:** Programação Paralela e Distribuída (PPD)  
-**Data:** Setembro 2025
